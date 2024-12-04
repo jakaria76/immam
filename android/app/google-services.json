@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480666241444",
+    "project_id": "bd-immam",
+    "storage_bucket": "bd-immam.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480666241444:android:931249bb901b92b7029931",
+        "android_client_info": {
+          "package_name": "com.example.immam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrD36qPIBvSOGJjplFs3nxrZgoI3ihQ28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
