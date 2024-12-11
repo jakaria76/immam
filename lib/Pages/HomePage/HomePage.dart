@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:immam/Pages/HomePage/Widget/ChatList.dart';
+import 'package:immam/Pages/ProfilePage/ProfilePage.dart';
 
 import 'Widget/TabBar.dart';
 
@@ -42,7 +45,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             icon: Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+              );
+            },
             icon: Icon(Icons.more_vert),
           ),
         ],bottom: MyTabBar(_tabController,context),

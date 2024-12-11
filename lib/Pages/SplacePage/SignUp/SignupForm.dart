@@ -51,9 +51,9 @@ class SignupForm extends StatelessWidget {
             :Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Primarybutton(btnName: "SignUp", icon: Icons.lock_open_rounded, onPressed: () {
+            Primarybutton(btnName: "SignUp", icon: Icons.lock_open_rounded, ontap: () {
               // Navigate to HomePage
-              authController.creatUser(email.text, password.text);
+              authController.creatUser(name.text,email.text, password.text);
             },),
           ],
         ),

@@ -1,13 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:immam/Pages/HomePage/HomePage.dart';
-import 'package:immam/Pages/SplacePage/LoginPage/LoginPage.dart';
+import 'package:immam/Model/user_model.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final db = FirebaseFirestore.instance;
   RxBool isLoading = false.obs;
+
+
+
 
   Future<void> login(String email, String password) async {
     isLoading.value = true;
@@ -17,44 +19,59 @@ class AuthController extends GetxController {
           password: password
       );
 
-      // Navigate to HomePage after successful login
-      Get.offAllNamed("HomePage");
-      // Use Get.off() for navigation instead of Navigator.pushReplacement
+      Get.offAllNamed("/HomePage");
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Get.snackbar('Login Error', 'No user found for that email.');
+        print("user not found that email");
       } else if (e.code == 'wrong-password') {
-        Get.snackbar('Login Error', 'Wrong password provided for that user.');
-      } else {
-        Get.snackbar('Error', e.message ?? 'An unknown error occurred.');
+        print("wrong password for that user");
       }
     } catch (e) {
-      Get.snackbar('Error', 'An unexpected error occurred.');
+      print(e);
     }
     isLoading.value = false;
   }
 
-  Future<void> creatUser(String email, String password) async {
-    isLoading.value = true;
+  void creatUser(String name, String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
-      Get.snackbar('Success', 'Account created successfully!');
-
-      // Navigate to HomePage after account creation (optional)
-      Get.off(() => HomePage()); // Use Get.off() for navigation
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        Get.snackbar('Signup Error', 'The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        Get.snackbar('Signup Error', 'The account already exists for that email.');
-      } else {
-        Get.snackbar('Error', e.message ?? 'An unknown error occurred.');
-      }
+      isLoading.value = true;
+      // Create user with Firebase
+      await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // Optional: Update display name
+      await initUser(email,name);
+      await auth.currentUser?.updateDisplayName(name);
+      // Navigate to HomePage after successful signup
+      Get.offAllNamed("/HomePage");
     } catch (e) {
-      Get.snackbar('Error', 'An unexpected error occurred.');
+      Get.snackbar("Error", e.toString());
+    } finally {
+      isLoading.value = false;
     }
-    isLoading.value = false;
+  }
+
+  Future<void> logoutUser() async{
+    await auth.signOut();
+    Get.offAllNamed("/SplacePage");
+  }
+  Future<void>initUser(String email,String name)async{
+    var newUser = UserModel(
+      email:email,
+      name :name,
+    );
+    try{
+      await db.collection("users").doc(auth.currentUser!.uid).set(
+        newUser.toJson(),
+      );
+    }catch(ex){
+      print(ex);
+    }
   }
 }
 
 //
+
+

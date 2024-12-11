@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:immam/Config/PagePath.dart';
 import 'package:immam/Config/Themes.dart';
 import 'package:immam/Pages/HomePage/HomePage.dart';
 import 'package:immam/Pages/SplacePage/SplacePage.dart';
@@ -21,12 +23,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'BD Immam',
       theme: lightTheme,
+      getPages:pagePath,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
-      home: HomePage(),
+      home: const Splacepage(),
     );
   }
 }

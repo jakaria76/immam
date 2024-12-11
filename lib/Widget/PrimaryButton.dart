@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 class Primarybutton extends StatelessWidget {
   final String btnName;
   final IconData icon;
-  final VoidCallback onPressed;
+  final VoidCallback ontap;
 
-  const Primarybutton({super.key, required this.btnName, required this.icon, required this.onPressed});
+  const Primarybutton({super.key, required this.btnName, required this.icon, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: ontap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal:40,vertical: 15 ),
         decoration: BoxDecoration(

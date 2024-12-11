@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:immam/Pages/SplacePage/LoginPage/LoginPage.dart';
 
 class Splacepage2 extends StatelessWidget {
@@ -65,20 +66,42 @@ class Splacepage2 extends StatelessWidget {
                 SizedBox(height: 20), // Space between text and buttons
 
                 // Button for Mosque Committee
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const Loginpage())),
-                  style: buttonStyle,
-                  child: Text('Mosque Committee?', style: buttonTextStyle),
+                GestureDetector(
+                  onTap: () {
+
+                    Get.offAllNamed('/Login');
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Text(
+                      'Mosque Committee?',
+                      style: buttonTextStyle,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10), // Space between buttons
 
                 // Button for Imam
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const Loginpage())),
-                  style: buttonStyle,
-                  child: Text('Immam?', style: buttonTextStyle),
+                GestureDetector(
+                  onTap: () {
+
+                    Get.offAllNamed('/Login');
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Text(
+                      'Immam?',
+                      style: buttonTextStyle,
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -14,6 +14,7 @@ class LoginForm extends StatelessWidget {
     TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
     AuthController authController=Get.put(AuthController());
+
     return Column(
       children: [
         const SizedBox(height: 40),
@@ -43,15 +44,13 @@ class LoginForm extends StatelessWidget {
           children: [
             Primarybutton(
               btnName: "Login",
-              icon: Icons.lock_open_rounded,
-              onPressed: () {
-                if (email.text.isNotEmpty && password.text.isNotEmpty) {
-                  authController.login(email.text, password.text);
-                } else {
-                  Get.snackbar('Input Error', 'Please fill in both email and password.');
-                }
-              },
-            ),
+              icon: Icons.lock_open,
+              ontap: (){
+              authController.login(
+                  email.text,
+                  password.text
+              );
+            },)
 
           ],
         ),),

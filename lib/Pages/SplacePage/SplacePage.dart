@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';  // Import the get package
 import 'SplaceWidget/SplaceBG.dart'; // Assuming this file contains Splacebg widget
 import 'SplacePage2/SplacePage2.dart';
-
 
 class Splacepage extends StatefulWidget {
   const Splacepage({super.key});
@@ -15,12 +15,9 @@ class _SplacepageState extends State<Splacepage> {
   void initState() {
     super.initState();
 
-    // Navigate to SplacePage2 after 5 seconds
+    // Navigate to SplacePage2 after 3 seconds using Get.offAllNamed
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Splacepage2()),
-      );
+      Get.offAllNamed('/SplacePage2');
     });
   }
 
