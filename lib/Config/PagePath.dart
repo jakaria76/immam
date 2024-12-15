@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:immam/Pages/HomePage/HomePage.dart';
-import 'package:immam/Pages/ProfilePage/ProfilePage.dart';
+
 import 'package:immam/Pages/SplacePage/LoginPage/LoginPage.dart';
 import 'package:immam/Pages/SplacePage/SplacePage2/SplacePage2.dart';
 
 import '../Pages/SplacePage/SplacePage.dart';
+import '../Pages/UserProfilePage/ProfilePage.dart';
 var pagePath =[
   GetPage(
       name: "/HomePage",
@@ -12,8 +13,8 @@ var pagePath =[
     transition: Transition.rightToLeft
   ),
   GetPage(
-      name: "/ProfilePage",
-      page: ()=>ProfilePage(),
+      name: "/UserProfilePage",
+      page: ()=>UserProfilePage(),
       transition: Transition.rightToLeft
   ),
   GetPage(

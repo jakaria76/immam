@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:immam/Pages/SplacePage/LoginPage/LoginPage.dart';
 
+import '../../../Controller/ProfileController.dart';
+
 class Splacepage2 extends StatelessWidget {
   const Splacepage2({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     // Define custom text properties for the title
     double fontSize = 50.0;
     FontWeight fontWeight = FontWeight.bold;

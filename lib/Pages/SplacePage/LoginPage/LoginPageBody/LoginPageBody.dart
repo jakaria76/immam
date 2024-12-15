@@ -3,11 +3,14 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:immam/Pages/SplacePage/LoginPage/LoginPageBody/LoginForm.dart';
 import 'package:immam/Pages/SplacePage/SignUp/SignupForm.dart';
+
+import '../../../../Controller/ProfileController.dart';
 class Loginpagebody extends StatelessWidget {
   const Loginpagebody({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     RxBool isLogin = true.obs;
     return Container(
       padding: EdgeInsets.all(20),
